@@ -24,12 +24,15 @@ class MarvelService {
     }
 
     _transformCharacter = (char) => {
+        const isImageAvailable = !char.thumbnail.path.includes('image_not_available')
         return {
+            id: char.id || Math.random(),
             name: char.name,
             description: char.description,
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+            wiki: char.urls[1].url,
+            imageAvailable: isImageAvailable
         }
     }
 }
