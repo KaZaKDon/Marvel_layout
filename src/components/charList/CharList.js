@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import './charList.scss';
 import MarvelService from '../../services/MarvelService';
+import Spinner from '../spinner/Spinner'
+import ErrorMessage from '../errorMessage/ErrorMessage'
 import abyss from '../../resources/img/abyss.jpg';
 
 class CharList extends Component {
@@ -53,7 +55,10 @@ class CharList extends Component {
             const imgStyle = item.imageAvailable ? { objectFit: 'cover' } : { objectFit: 'contain' };
 
             return (
-                <li className="char__item" key={item.id}>
+                <li 
+                className="char__item" 
+                key={item.id}
+                onClick={() => this.props.onCharSelected(item.id)}>
                     <img src={item.thumbnail || abyss} alt={item.name} style={imgStyle}/>
                     <div className="char__name">{item.name}</div>
                 </li>
@@ -70,8 +75,8 @@ class CharList extends Component {
     render() {
         const { chars, loading, error } = this.state;
 
-        const errorMessage = error ? <div className="char__error">Ошибка загрузки</div> : null;
-        const spinner = loading ? <div className="char__loading">Загрузка...</div> : null;
+        const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ? this.renderItems(chars) : null;
 
         return (
