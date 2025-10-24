@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { charShape } from '../../utils/charShape';
 
 import './randomChar.scss';
 import Spinner from '../spinner/Spinner'
@@ -102,5 +103,9 @@ const View =  ({char}) => {
         </div>
     )
 }
+
+View.propTypes = {
+    char: charShape
+};
 
 export default RandomChar;

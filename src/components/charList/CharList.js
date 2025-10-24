@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import './charList.scss';
 import MarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner'
@@ -105,5 +107,13 @@ class CharList extends Component {
         );
     }
 }
+
+CharList.propTypes ={
+    onCharSelected: PropTypes.func.isRequired
+}
+CharList.defaultProps = {
+    onCharSelected: () => {}
+}
+
 
 export default CharList;
