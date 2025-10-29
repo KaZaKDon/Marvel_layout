@@ -1,7 +1,8 @@
 class MarvelService {
     _apiBase ='https://gateway.marvel.com:443/v1/public/';
     //_apiBase ='https://marvel-server-zeta.vercel.app/';
-    _apiKey = process.env.REACT_APP_MARVEL_KEY;
+    //_apiKey = process.env.REACT_APP_MARVEL_KEY;
+    _apiKey = `apikey=${process.env.REACT_APP_MARVEL_KEY}`;
     _baseOffset = 210;
 
     getResource = async (url) => {
